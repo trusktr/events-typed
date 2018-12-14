@@ -1,5 +1,5 @@
 {
-  "name": "events.ts",
+  "name": "events-typed",
   "version": "0.0.0",
   "description": "A typesafe EventEmitter for TypeScript that wraps Node.js EventEmitter.",
   "author": "Joe Pea <joe@trusktr.io>",
@@ -72,5 +72,15 @@
   },
   "dependencies": {
     "events": "^3.0.0"
-  }
+  },
+  "keywords": [
+    "events",
+    "event",
+    "emitter",
+    "EventEmitter",
+    "event-emitter",
+    "event emitter",
+    "observable",
+    "event-pattern"
+  ]
 }
