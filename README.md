@@ -3,23 +3,11 @@
 A typesafe EventEmitter for TypeScript that wraps [Node.js
 EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter).
 
-Works in the browser too.
+Works in browser environments too.
 
-Basically this gives you the same `EventEmitter` from Node, so the API is
-_almost_ the same, with the only minor difference being that events only take
-one argument, not many, or basically the following,
-
-```ts
-emitter.emit('foo', singleArg)
-```
-
-is allowed, but
-
-```ts
-emitter.emit('foo', arg1, arg2, arg3)
-```
-
-is not yet possible (see Caveats and TODO below).
+This gives you the same `EventEmitter` from Node, wrapped, so the API is
+_almost_ the same. As usual, `any` can be used as an escape hatch (see Caveats
+and TODO below).
 
 ## Why?
 
@@ -168,6 +156,20 @@ emitter.emit(Events.SOME_EVENT, 42) // autocompletion works well
   example.
 - Symbols for event names are not currently supported.
 - Multiple event payload arguments are not currently supported.
+
+  The following,
+
+  ```ts
+  emitter.emit('foo', singleArg)
+  ```
+
+  is supported, but
+
+  ```ts
+  emitter.emit('foo', arg1, arg2, arg3)
+  ```
+
+  is not yet possible.
 
 ## TODO
 
