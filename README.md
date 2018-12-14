@@ -1,10 +1,25 @@
 # events.ts
 
-A typesafe EventEmitter for TypeScript that wraps Node.js EventEmitter.
+A typesafe EventEmitter for TypeScript that wraps [Node.js
+EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter).
+
+Works in the browser too.
 
 Basically this gives you the same `EventEmitter` from Node, so the API is
 _almost_ the same, with the only minor difference being that events only take
-one argument, not many (`ee.emit('foo', singleArg)` and not `ee.emit('foo', arg1, arg2, arg3)`).
+one argument, not many, or basically the following,
+
+```ts
+emitter.emit('foo', singleArg)
+```
+
+is allowed, but
+
+```ts
+emitter.emit('foo', arg1, arg2, arg3)
+```
+
+is not yet possible (see Caveats and TODO below).
 
 ## Why?
 

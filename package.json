@@ -2,6 +2,14 @@
   "name": "events-typed",
   "version": "1.0.1",
   "description": "A typesafe EventEmitter for TypeScript that wraps Node.js EventEmitter.",
+  "homepage": "https://github.com/trusktr/events-typed",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:trusktr/events-typed.git"
+  },
+  "bugs": {
+    "url": "https://github.com/trusktr/events-typed/issues"
+  },
   "author": "Joe Pea <joe@trusktr.io>",
   "license": "MIT",
   "typings": "dist/index.d.ts",
