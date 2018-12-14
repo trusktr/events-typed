@@ -68,7 +68,7 @@ export interface IEventEmitter<EventTypes> {
 // implementation still comes from Node's EventEmitter.
 //
 // eslint-disable-next-line typescript/explicit-function-return-type
-export function EventEmitter<EventTypes>() {
+export function makeEventEmitterClass<EventTypes>() {
   // merge the IEventEmitter interface and EventEmitter as IEventEmitter
   // implementation into one.
   // XXX Is there a better way?

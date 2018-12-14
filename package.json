@@ -38,8 +38,12 @@
     "*.{ts,tsx}": [
       "npm run typecheck"
     ],
-    "*.{js,ts,tsx,json,md}": [
+    "*.{js,ts,tsx,json}": [
       "npm run lint-fix --",
+      "prettier --write",
+      "git add"
+    ],
+    "*.md": [
       "prettier --write",
       "git add"
     ],
