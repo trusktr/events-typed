@@ -17,26 +17,26 @@ export interface IEventEmitter<EventTypes> {
   addListener<EventName extends keyof EventTypes>(
     event: EventName,
     listener: (...args: EventArgs<EventTypes, EventName>) => void,
-  ): this
+  ): IEventEmitter<EventTypes>
 
   on<EventName extends keyof EventTypes>(
     event: EventName,
     listener: (...args: EventArgs<EventTypes, EventName>) => void,
-  ): this
+  ): IEventEmitter<EventTypes>
 
   once<EventName extends keyof EventTypes>(
     event: EventName,
     listener: (...args: EventArgs<EventTypes, EventName>) => void,
-  ): this
+  ): IEventEmitter<EventTypes>
 
   removeListener<EventName extends keyof EventTypes>(
     event: EventName,
     listener: (...args: EventArgs<EventTypes, EventName>) => void,
-  ): this
+  ): IEventEmitter<EventTypes>
 
   removeAllListeners<EventName extends keyof EventTypes>(
     event?: EventName,
-  ): this
+  ): IEventEmitter<EventTypes>
 
   emit<EventName extends keyof EventTypes>(
     event: EventName,
@@ -44,7 +44,7 @@ export interface IEventEmitter<EventTypes> {
   ): boolean
 
   eventNames<EventName extends keyof EventTypes>(): Array<EventName>
-  setMaxListeners(n: number): this
+  setMaxListeners(n: number): IEventEmitter<EventTypes>
   getMaxListeners(): number
 
   listeners<EventName extends keyof EventTypes>(
@@ -56,12 +56,12 @@ export interface IEventEmitter<EventTypes> {
   prependListener<EventName extends keyof EventTypes>(
     event: EventName,
     listener: (...args: EventArgs<EventTypes, EventName>) => void,
-  ): this
+  ): IEventEmitter<EventTypes>
 
   prependOnceListener<EventName extends keyof EventTypes>(
     event: EventName,
     listener: (...args: EventArgs<EventTypes, EventName>) => void,
-  ): this
+  ): IEventEmitter<EventTypes>
 }
 
 // This creates an EventEmitter class that uses our type definition. The
@@ -72,7 +72,10 @@ export function makeEventEmitterClass<EventTypes>() {
   // merge the IEventEmitter interface and EventEmitter as IEventEmitter
   // implementation into one.
   // XXX Is there a better way?
-  return class EventEmitter
-    extends ((events.EventEmitter as unknown) as IEventEmitter<EventTypes>)
-    implements IEventEmitter<EventTypes> {}
+  const EventEmitter = class extends ((events.EventEmitter as unknown) as IEventEmitter<
+    EventTypes
+  >) {}
+  // implements IEventEmitter<EventTypes> {}
+
+  return EventEmitter
 }
