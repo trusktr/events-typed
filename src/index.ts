@@ -4,10 +4,15 @@ import * as events from 'events'
 // EventEmitter.emit. This makes it possible to require a payload argument if
 // the type is not `undefined`, or to not require an event payload argument if
 // the type is `undefined`.
+// prettier-ignore
 type EventArgs<
   EventTypes,
   K extends keyof EventTypes
-> = EventTypes[K] extends undefined ? [] : [EventTypes[K]]
+> = EventTypes[K] extends undefined
+  ? []
+  : EventTypes[K] extends any[]
+    ? EventTypes[K]
+    : [EventTypes[K]]
 
 // our own version of EventEmitter with type-safe events (because the
 // @types/node definition makes all events type `any`).
